@@ -31,9 +31,8 @@ public class ShoppingCartItemController {
             .build();
 
         ShoppingCartItem cartItem = ShoppingCartItem.builder()
-            .id(23432)
-            .bicycleId(123)
             .userId(currentUser.getId())
+            .bicycleId(123)
             .quantity(3232)
             .createdAt(Timestamp.from(Instant.now()))
             .build();
