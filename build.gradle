@@ -68,7 +68,6 @@ dependencies {
     testCompile("org.junit.platform:junit-platform-runner:${junitPlatformVersion}")
     testCompile("com.jayway.restassured:spring-mock-mvc:${springMockMvCVersion}")
     testCompile("com.github.sbrannen:spring-test-junit5:${springExtensionVersion}")
-    testCompile("com.h2database:h2:1.4.192")
 }
 
 

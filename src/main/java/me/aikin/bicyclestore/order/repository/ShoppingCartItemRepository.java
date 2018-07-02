@@ -3,6 +3,8 @@ package me.aikin.bicyclestore.order.repository;
 import me.aikin.bicyclestore.order.domain.ShoppingCartItem;
 import org.apache.ibatis.annotations.*;
 
+// TODO: rename table name
+
 @Mapper
 public interface ShoppingCartItemRepository {
     @Results({
