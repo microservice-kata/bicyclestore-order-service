@@ -7,6 +7,7 @@ import com.jayway.restassured.module.mockmvc.specification.MockMvcRequestSpecifi
 import me.aikin.bicyclestore.order.api.shopping.cart.ShoppingCartItemControllerTest;
 import me.aikin.bicyclestore.order.security.principal.UserPrincipal;
 import org.assertj.core.util.Lists;
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,24 @@ public abstract class ApiBaseTest {
     @Autowired
     private TruncateDatabaseService truncateDatabaseService;
 
+    @Autowired
+    private Flyway flyway;
+
     @BeforeEach
     public void setup() throws SQLException {
         truncateDatabaseService.truncate();
 
+        /*
+        * TODO: should refactor use BeforeAll
+        * fix by use https://github.com/flyway/flyway-test-extensions
+        */
+        flyway.clean();
+        flyway.migrate();
+
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         RestAssuredMockMvc.mockMvc(mockMvc);
     }
+
 
     public MockMvcRequestSpecification given() {
         // TODO: should refactor
