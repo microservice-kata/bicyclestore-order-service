@@ -4,7 +4,6 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.module.mockmvc.RestAssuredMockMvc;
 import com.jayway.restassured.module.mockmvc.specification.MockMvcRequestSpecBuilder;
 import com.jayway.restassured.module.mockmvc.specification.MockMvcRequestSpecification;
-import me.aikin.bicyclestore.order.api.shopping.cart.ShoppingCartItemControllerTest;
 import me.aikin.bicyclestore.order.security.principal.UserPrincipal;
 import org.assertj.core.util.Lists;
 import org.flywaydb.core.Flyway;
@@ -37,6 +36,11 @@ public abstract class ApiBaseTest {
     @Autowired
     private Flyway flyway;
 
+    private enum RoleName {
+        ROLE_USER,
+        ROLE_ADMIN
+    }
+
     @BeforeEach
     public void setup() throws SQLException {
         truncateDatabaseService.truncate();
@@ -55,7 +59,7 @@ public abstract class ApiBaseTest {
 
     public MockMvcRequestSpecification given() {
         // TODO: should refactor
-        List<GrantedAuthority> authorities = Lists.newArrayList(new SimpleGrantedAuthority(ShoppingCartItemControllerTest.RoleName.ROLE_USER.name()));
+        List<GrantedAuthority> authorities = Lists.newArrayList(new SimpleGrantedAuthority(RoleName.ROLE_USER.name()));
         UserPrincipal userPrincipal = UserPrincipal.builder()
             .id(1L)
             .username("aikin")
@@ -69,9 +73,9 @@ public abstract class ApiBaseTest {
             .build();
 
         return RestAssuredMockMvc
-                .given()
-                .spec(specification)
-                .header("Accept", ContentType.JSON.withCharset("UTF-8"))
-                .header("Content-Type", ContentType.JSON.withCharset("UTF-8"));
+            .given()
+            .spec(specification)
+            .header("Accept", ContentType.JSON.withCharset("UTF-8"))
+            .header("Content-Type", ContentType.JSON.withCharset("UTF-8"));
     }
 }
