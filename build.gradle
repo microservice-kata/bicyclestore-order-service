@@ -48,6 +48,7 @@ ext {
     springExtensionVersion = "1.0.3"
     springMockMvCVersion = "2.9.0"
     flywayVersion = "5.1.4"
+    logstashVersion = "4.9"
 }
 
 dependencies {
@@ -59,6 +60,8 @@ dependencies {
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}")
 
     compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("net.logstash.logback:logstash-logback-encoder:${logstashVersion}")
+
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.flywaydb:flyway-core:${flywayVersion}")
