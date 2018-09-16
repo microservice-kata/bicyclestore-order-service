@@ -16,5 +16,5 @@ management:
     shutdown:
       enabled: true
 
-#logging:
-#    config: classpath:logback.xml
+logging:
+    config: classpath:logback.xml
