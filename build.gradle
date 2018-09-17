@@ -79,13 +79,13 @@ dependencies {
 
 def env = project.hasProperty("env") ? env : "dev"
 
-processResources {
-    println("active profile: ${env}")
-
-    include "application.yml"
-    include "application-${env}.yml"
-    include "db/migration/**"
-}
-build.dependsOn processResources
+//processResources {
+//    println("active profile: ${env}")
+//
+//    include "application.yml"
+//    include "application-${env}.yml"
+//    include "db/migration/**"
+//}
+//build.dependsOn processResources
 bootRun.dependsOn flywayMigrate
 bootRun.systemProperty "spring.profiles.active", env
