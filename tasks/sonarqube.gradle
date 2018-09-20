@@ -3,6 +3,7 @@ apply plugin: 'org.sonarqube'
 
 sonarqube {
     properties {
+//        property "sonar.host.url", "http://localhost:9090"
         property "sonar.projectName", "bicyclestore-order-service"
         property "sonar.projectKey", "bicyclestore-order-service"
         property "sonar.jacoco.reportPaths", "${buildDir}/jacoco/junitPlatformTest.exec"
