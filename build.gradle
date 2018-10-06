@@ -28,6 +28,7 @@ apply {
     from("tasks/test-coverage.gradle")
     from("tasks/checkstyle.gradle")
     from("tasks/sonarqube.gradle")
+    from("tasks/git-hooks.gradle")
 }
 
 
