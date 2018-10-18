@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: bicyclestore-order-service
-  profiles:
-    active: dev
   flyway:
     enabled: true
 
